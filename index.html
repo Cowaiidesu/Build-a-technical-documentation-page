@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sorting Algorithms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main id="main-doc">
+    <section class="main-section" id="Selection_Sort">
+        <header>Selection Sort</header>
+        <p>Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list. The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion of the list and swaps it with the first element of the unsorted portion. This process is repeated for the remaining unsorted portion of the list until the entire list is sorted. One variation of selection sort is called “Bidirectional selection sort” that goes through the list of elements by alternating between the smallest and largest element, this way the algorithm can be faster in some cases.
+        </p>
+        <code># Python program for implementation of Selection
+            # Sort
+            import sys
+            A = [64, 25, 12, 22, 11]
+
+            # Traverse through all array elements
+            for i in range(len(A)):
+
+            # Find the minimum element in remaining
+            # unsorted array
+            min_idx = i
+            for j in range(i+1, len(A)):
+            if A[min_idx] > A[j]:
+            min_idx = j
+
+            # Swap the found minimum element with
+            # the first element
+            A[i], A[min_idx] = A[min_idx], A[i]
+
+            # Driver code to test above
+            print ("Sorted array")
+            for i in range(len(A)):
+            print("%d" %A[i],end=" ")
+        </code>
+        <p>Sorted array: <br/>
+            11 12 22 25 64 <br/>
+            Information obtained from <a target="_blank" href="https://www.geeksforgeeks.org/selection-sort/">GeekforGeeks</a>>
+        </p>
+        <ul>
+            <li>Selection sort is a simple and easy-to-understand sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list.
+            </li>
+            <li>This process is repeated for the remaining unsorted portion of the list until the entire list is sorted.
+            </li>
+            <li>It has a time complexity of O(n^2) in the worst and average case which makes it less efficient for large data sets.
+            </li>
+        </ul>
+    </section>
+    <section class="main-section" id="Bubble_Sort">
+        <header>Bubble Sort</header>
+        <p>Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.
+
+        </p>
+        <code># Python program for implementation of Bubble Sort
+
+
+            def bubbleSort(arr):
+            n = len(arr)
+
+            # Traverse through all array elements
+            for i in range(n):
+
+            # Last i elements are already in place
+            for j in range(0, n-i-1):
+
+            # traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+            if arr[j] > arr[j+1]:
+            arr[j], arr[j+1] = arr[j+1], arr[j]
+
+
+            # Driver code to test above
+            if __name__ == "__main__":
+            arr = [5, 1, 4, 2, 8]
+
+            bubbleSort(arr)
+
+            print("Sorted array is:")
+            for i in range(len(arr)):
+            print("%d" % arr[i], end=" ")
+        </code>
+        <p>Sorted array: <br/>
+            1 2 4 5 8 <br/>
+            Information obtained from <a target="_blank" href="https://www.geeksforgeeks.org/bubble-sort/">GeekforGeeks</a>
+        </p>
+        <ul>
+            <li>Bubble sort takes minimum time (Order of n) when elements are already sorted. Hence it is best to check if the array is already sorted or not beforehand, to avoid O(N2) time complexity.
+
+            </li>
+            <li>Bubble sort performs the swapping of adjacent pairs without the use of any major data structure. Hence Bubble sort algorithm is an in-place algorithm.</li>
+            <li>Due to its simplicity, bubble sort is often used to introduce the concept of a sorting algorithm..</li>
+        </ul>
+    </section>
+    <section class="main-section" id="Insertion_Sort">
+        <header>Insertion Sort</header>
+        <p>Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
+
+        </p>
+        <code># Python program for implementation of Insertion Sort
+
+            # Function to do insertion sort
+            def insertionSort(arr):
+
+            # Traverse through 1 to len(arr)
+            for i in range(1, len(arr)):
+
+            key = arr[i]
+
+            # Move elements of arr[0..i-1], that are
+            # greater than key, to one position ahead
+            # of their current position
+            j = i-1
+            while j >= 0 and key < arr[j] :
+            arr[j + 1] = arr[j]
+            j -= 1
+            arr[j + 1] = key
+
+
+            # Driver code to test above
+            arr = [12, 11, 13, 5, 6]
+            insertionSort(arr)
+            for i in range(len(arr)):
+            print ("% d" % arr[i])
+
+            # This code is contributed by Mohit Kumra
+        </code>
+        <p>Sorted array: <br/>
+            5 6 11 12 13
+            <br/>
+            Information obtained from <a target="_blank" href="https://www.geeksforgeeks.org/insertion-sort/">GeekforGeeks</a>
+        </p>
+        <ul>
+            <li>Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.
+
+            </li>
+            <li>Insertion Sort algorithm follows incremental approach.
+
+            </li>
+            <li>Insertion sort is used when number of elements is small. It can also be useful when input array is almost sorted, only few elements are misplaced in complete big array.
+
+            </li>
+        </ul>
+    </section>
+    <section class="main-section" id="Merge_Sort">
+        <header>Merge Sort</header>
+        <p>Merge sort is a sorting algorithm that works by dividing an array into smaller subarrays, sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array.
+
+            In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.</p>
+        <code># Python program for implementation of MergeSort
+            def mergeSort(arr):
+            if len(arr) > 1:
+
+            # Finding the mid of the array
+            mid = len(arr)//2
+
+            # Dividing the array elements
+            L = arr[:mid]
+
+            # into 2 halves
+            R = arr[mid:]
+
+            # Sorting the first half
+            mergeSort(L)
+
+            # Sorting the second half
+            mergeSort(R)
+
+            i = j = k = 0
+
+            # Copy data to temp arrays L[] and R[]
+            while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+            else:
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
+            # Checking if any element was left
+            while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+            while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
+            # Code to print the list
+
+
+            def printList(arr):
+            for i in range(len(arr)):
+            print(arr[i], end=" ")
+            print()
+
+
+            # Driver Code
+            if __name__ == '__main__':
+            arr = [12, 11, 13, 5, 6, 7]
+            print("Given array is", end="\n")
+            printList(arr)
+            mergeSort(arr)
+            print("Sorted array is: ", end="\n")
+            printList(arr)
+
+            # This code is contributed by Mayank Khanna
+        </code>
+        <p>Sorted array: <br/>
+            5 6 7 11 12 13
+            <br/>
+            Information obtained from <a target="_blank" href="https://www.geeksforgeeks.org/merge-sort/">GeekforGeeks</a>
+        </p>
+        <ul>
+            <li>In merge sort all elements are copied into an auxiliary array. So N auxiliary space is required for merge sort.</li>
+            <li>In merge sort the merging step requires extra space to store the elements.</li>
+            <li>Merge sort has a time complexity of O(n log n), which means it is relatively efficient for sorting large datasets.
+            </li>
+        </ul>
+    </section>
+    <section class="main-section" id="Quick_Sort">
+        <header>Quick Sort</header>
+        <p>Like Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways. </p>
+        <code># Python3 implementation of QuickSort
+
+
+            # Function to find the partition position
+            def partition(array, low, high):
+
+            # Choose the rightmost element as pivot
+            pivot = array[high]
+
+            # Pointer for greater element
+            i = low - 1
+
+            # Traverse through all elements
+            # compare each element with pivot
+            for j in range(low, high):
+            if array[j] <= pivot:
+            # If element smaller than pivot is found
+            # swap it with the greater element pointed by i
+            i = i + 1
+
+            # Swapping element at i with element at j
+            (array[i], array[j]) = (array[j], array[i])
+
+            # Swap the pivot element with
+            # e greater element specified by i
+            (array[i + 1], array[high]) = (array[high], array[i + 1])
+
+            # Return the position from where partition is done
+            return i + 1
+
+            # Function to perform quicksort
+
+
+            def quick_sort(array, low, high):
+            if low < high:
+
+            # Find pivot element such that
+            # element smaller than pivot are on the left
+            # element greater than pivot are on the right
+            pi = partition(array, low, high)
+
+            # Recursive call on the left of pivot
+            quick_sort(array, low, pi - 1)
+
+            # Recursive call on the right of pivot
+            quick_sort(array, pi + 1, high)
+
+
+            # Driver code
+            array = [10, 7, 8, 9, 1, 5]
+            quick_sort(array, 0, len(array) - 1)
+
+            print(f'Sorted array: {array}')
+
+            # This code is contributed by Adnan Aliakbar
+        </code>
+        <p>Sorted array: <br/>
+            1 5 7 8 9 10
+            <br/>
+            Information obtained from <a target="_blank" href="https://www.geeksforgeeks.org/quick-sort/">GeekforGeeks</a>
+        </p>
+        <ul>
+            <li>The default implementation is not stable. However any sorting algorithm can be made stable by considering indexes as comparison parameter.</li>
+            <li>As per the broad definition of in-place algorithm it qualifies as an in-place sorting algorithm as it uses extra space only for storing recursive function calls but not for manipulating the input. </li>
+            <li>Although the worst case time complexity of QuickSort is O(n2) which is more than many other sorting algorithms like Merge Sort and Heap Sort, QuickSort is faster in practice, because its inner loop can be efficiently implemented on most architectures, and in most real-world data. </li>
+        </ul>
+    </section>
+</main>
+<nav id="navbar">
+    <header>Sorting Algorithms</header>
+    <a class="nav-link" href="#Selection_Sort">Selection Sort</a>
+    <a class="nav-link" href="#Bubble_Sort">Bubble Sort</a>
+    <a class="nav-link" href="#Insertion_Sort">Insertion Sort</a>
+    <a class="nav-link" href="#Merge_Sort">Merge Sort</a>
+    <a class="nav-link" href="#Quick_Sort">Quick Sort</a>
+</nav>
+</body>
+</html>
